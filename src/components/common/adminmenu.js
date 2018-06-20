@@ -1,13 +1,21 @@
 import React, { Component } from 'react';
 import '../../assets/stylesheets/menu.css';
-
+import ReactDOM from 'react-dom';
+import MainContent from '../../view/common/maincontent';
 class adminmenu extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
+         
                 this.state = {           
         };
+
+        this.logoutsubmit = this.logoutsubmit.bind(this);
     }
-  
+    logoutsubmit(event) {
+        // alert('forgot pass');
+           ReactDOM.render((<MainContent />), document.getElementById("main-content"));  
+    }
+
     getmenubyrole() {           
         fetch('http://localhost:7000/admin/getmenubyrole', {
             method: 'POST',
@@ -64,6 +72,7 @@ class adminmenu extends Component {
                      </li>
                      <li><a href='#'><span>About</span></a></li>
                      <li className='last'><a href='#'><span>Contact</span></a></li> 
+                     <li className='last'><a href='#' onClick={this.logoutsubmit} ><span>Log Out</span></a></li>
                  </ul>
              </div>
             

@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import VWLoginContent from '../../view/users/logincontent.jsx';
-import VWRegisterContent from '../../view/users/register';
+import LoginContent from '../../view/users/logincontent';
 import '../../assets/stylesheets/login.css';
-import MainComponent from '../../view/common/main';
+import HomeComponent from '../../view/common/home';
 import ReactDOM from 'react-dom';
-import MenuContent from '../common/adminmenu.js';
+import MenuContent from '../../components/common/adminmenu';
+import RegisterContent from '../../view/users/register';
+import ForgotpassContent from '../../view/users/forgotpass';
 class Login extends Component {
 
   constructor(props) {
@@ -14,26 +15,17 @@ class Login extends Component {
       ErrorMsg:''
       };
     
-      this.handleSubmit = this.handleSubmit.bind(this);
-      //const { onCustomClick } = this.props
+      this.loginsubmit = this.loginsubmit.bind(this);
+      this.forgotpasssubmit = this.forgotpasssubmit.bind(this);
+      this.registersubmit = this.registersubmit.bind(this);
+
+       
     }
-    
-
-    // handleClick = event => {
-    //   if (this.props.onClick) {
-    //     this.props.onClick(event)
-    //   }
-  
-    //   if (this.props.onCustomClick) {
-    //     this.props.onCustomClick(event)
-    //   }
-    // }
-
     componentDidMount() {
 
     }
 
-    handleSubmit(event) {
+    loginsubmit(event) {
       event.preventDefault();
       fetch('http://localhost:7000/admin/login', {
         method: 'POST',
@@ -48,11 +40,9 @@ class Login extends Component {
       }).then((response) => response.json())
           .then((responseJson) => {
             console.log(responseJson);
-            alert(responseJson.code);
-              if(responseJson.code==="200")
+              if(responseJson.code = '200')
               {
-
-                ReactDOM.render((<MainComponent />), document.getElementById("root"));
+                ReactDOM.render((<HomeComponent />), document.getElementById("main-content"));
               }
               else
               {
@@ -60,9 +50,6 @@ class Login extends Component {
                   ErrorMsg: responseJson.message
                 });
               }
-
-           
-
             return responseJson.result;
           })
           .catch((error) => {
@@ -70,57 +57,23 @@ class Login extends Component {
           });
     }
     getmenu() {      
-   
       ReactDOM.render((<MenuContent />), document.getElementById("menu-root"));   
-     
+    }
+    
+    forgotpasssubmit(event) {
+   // alert('forgot pass');
+      ReactDOM.render((<ForgotpassContent />), document.getElementById("main-content"));  
+    }
+    registersubmit(event) {
+     // alert('RegisterContent');
+      ReactDOM.render((<RegisterContent />), document.getElementById("main-content"));  
     }
 
     render() {
       return (
-          <VWLoginContent  login={this}/>
+          <LoginContent login={this}/>
       )
     }
-//     render() {
-//       console.log(this.state.outData);
-//     return <div>
-        
-   
-//   <div>
-//   <label  > {this.state.ErrorMsg}</label><br/> <br/>
-//   <div>
-// 		<div className="text-center" style={{padding:'50px 0'}}>
-// 			<div className="logo">login</div>
-// 			<div className="login-form-1">
-//       <form onSubmit={this.handleSubmit} >
-// 					<div className="login-form-main-message"></div>
-// 					<div className="main-login-form">
-// 						<div className="login-group">
-// 							<div className="form-group">
-// 								<label htmlFor="lg_username" className="sr-only">Username</label>
-// 								<input type="email" className="form-control" id="emailid" name="emailid" placeholder="username" required />
-// 							</div>
-// 							<div className="form-group">
-// 								<label htmlFor="lg_password" className="sr-only">Password</label>
-// 								<input type="password" className="form-control" id="password" name="password" placeholder="password" required/>
-// 							</div>
-// 						</div>
-// 						<button type="submit" className="login-button" ><i className="fa fa-chevron-right"></i></button>
-// 					</div>
-// 					<div className="etc-login-form">
-// 						<p>forgot your password? <a href="#">click here</a></p>
-// 						<p>new user? <a href="#">create new account</a></p>
-// 						<button className="login-button" type="submit" > <i className="fa fa-chevron-right"></i></button>
-// 						<button className="login-button" type="submit" > <i className="fa fa-chevron-right"></i></button>
-// 					</div>
-// 				</form>
-// 			</div>
-// 		</div>
-// </div>
-    
-//     </div>
-//   </div>;
-//   }
-
   }
 
   export default Login;

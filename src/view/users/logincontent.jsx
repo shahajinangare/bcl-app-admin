@@ -5,7 +5,7 @@ const LoginContent = ({login}) => (
 		<div className="text-center" style={{padding:'50px 0'}}>
 			<div className="logo">login</div>
 			<div className="login-form-1">
-			<form  onSubmit={login.handleSubmit}>
+			<form  onSubmit={login.loginsubmit}>
 					<div className="login-form-main-message"></div>
 					<div className="main-login-form">
 						<div className="login-group">
@@ -20,13 +20,12 @@ const LoginContent = ({login}) => (
 						</div>
 						<button type="submit" className="login-button" ><i className="fa fa-chevron-right"></i></button>
 					</div>
+					</form>
 					<div className="etc-login-form">
-						<p>forgot your password? <a href="#">click here</a></p>
-						<p>new user? <a href="#">create new account</a></p>
-						<button className="login-button" type="submit" > <i className="fa fa-chevron-right"></i></button>
-						<button className="login-button" type="submit" > <i className="fa fa-chevron-right"></i></button>
+						<p>forgot your password? <a href="#" onClick={login.forgotpasssubmit}  >click here</a></p>
+						<p>new user? <a href="#" onClick={login.registersubmit}>create new account</a></p>
 					</div>
-				</form>
+				
 			</div>
 		</div>
 </div>
