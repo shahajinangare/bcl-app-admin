@@ -8,11 +8,8 @@ class MainContent extends Component {
     render() {
       return (
         <div>
-
-           <div id="menu-root">
-
-   
-          <VWMainContent />
+           <div id="menu-root">   
+           <VWMainContent />
           </div>
         </div>
       )

@@ -1,7 +1,8 @@
 import React from 'react';
 
-const MenuContent = () => (
-    <div id='cssmenu'>
+const MenuContent = ({menuaccess}) => (
+	<div id="menu-root">
+		<div id='cssmenu'>
     <ul>
         <li><a href='#'><span>Home</span></a></li>
         <li className='active has-sub'><a href='#'><span>Products</span></a>
@@ -22,9 +23,10 @@ const MenuContent = () => (
         </li>
         <li><a href='#'><span>About</span></a></li>
         <li className='last'><a href='#'><span>Contact</span></a></li>
+        <li className='last'><a href='#'  ><span>Log Out</span></a></li>
     </ul>
 </div>
-
+</div>
 );
 
 export default MenuContent;
