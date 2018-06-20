@@ -32,9 +32,9 @@ const LoginContent = () => (
 						</div>
  
  
-						<button type="submit" class="login-button"><i class="fa fa-chevron-right"></i></button>
+						<button type="submit" className="login-button"><i className="fa fa-chevron-right"></i></button>
 					</div>
-					<div class="etc-login-form">
+					<div className="etc-login-form">
 						<p>forgot your password? <a href="#">click here</a></p>
 						<p>new user? <a href="#">create new account</a></p>
  
