@@ -77,18 +77,9 @@ class Login extends Component {
 
     render() {
       return (
-<<<<<<< HEAD
-        <div>
-                
-          <VWLoginContent />
-       
-          <button className="login-button" type="button"  onClick={this.getmenu.bind()}>Get Menu</button>
-        </div>
-=======
           
 
           <VWLoginContent/>
->>>>>>> 3e4c64d0dfc2bd9437e07aaff7ac5670dd86ba77
       )
     }
   }
