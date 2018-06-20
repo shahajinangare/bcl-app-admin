@@ -30,28 +30,20 @@ const LoginContent = () => (
 								<label for="lg_remember">remember</label>
 							</div> */}
 						</div>
-<<<<<<< HEAD
-
-
-=======
-<<<<<<< HEAD
->>>>>>> 3e4c64d0dfc2bd9437e07aaff7ac5670dd86ba77
+ 
+ 
 						<button type="submit" class="login-button"><i class="fa fa-chevron-right"></i></button>
 					</div>
 					<div class="etc-login-form">
 						<p>forgot your password? <a href="#">click here</a></p>
 						<p>new user? <a href="#">create new account</a></p>
-<<<<<<< HEAD
+ 
 
 						<button className="login-button" type="submit" > <i className="fa fa-chevron-right"></i></button>
-						 
-
-=======
-=======
+ 
 						<button className="login-button" type="submit" > <i className="fa fa-chevron-right"></i></button>
 						 
->>>>>>> 540a1a3d2ff2aaf29e6004f1f8dcc4d0df47236f
->>>>>>> 3e4c64d0dfc2bd9437e07aaff7ac5670dd86ba77
+ 
 					</div>
 					
 				</form>
