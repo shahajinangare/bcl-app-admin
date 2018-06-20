@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import VWRegisterContent from '../../view/users/register';
+import VWRegisterContent from '../../view/users/register.jsx';
 import '../../assets/stylesheets/login.css';
 
 class Register extends Component {
