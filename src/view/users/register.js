@@ -44,7 +44,7 @@ const RegisterContent = () => (
 								<label for="reg_agree">i agree with <a href="#">terms</a></label>
 							</div> */}
 						</div>
-						<button type="submit" className="login-button"><i className="fa fa-chevron-right"></i></button>
+						<button type="submit" className="login-button" ><i className="fa fa-chevron-right"></i></button>
 					</div>
 					<div className="etc-login-form">
 						<p>already have an account? <a href="#">login here</a></p>
