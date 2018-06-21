@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import LoginContent from '../../view/users/logincontent';
 import '../../assets/stylesheets/login.css';
-import HomeComponent from '../../view/common/home';
+import HomeComponent from '../../components/common/home';
 import ReactDOM from 'react-dom';
 import MenuContent from '../../components/common/adminmenu';
 import RegisterContent from '../../view/users/register';
 import ForgotpassContent from '../../components/users/forgotpass';
+
 class Login extends Component {
 
   constructor(props) {
@@ -39,9 +40,12 @@ class Login extends Component {
         }),
       }).then((response) => response.json())
           .then((responseJson) => {
-            console.log(responseJson);
+           // console.log(JSON.stringify(responseJson.result[0]));
               if(responseJson.code = '200')
               {
+                sessionStorage.setItem('userdet', JSON.stringify(responseJson.result[0]));
+
+               // console.log(JSON.parse(sessionStorage.getItem('userdet')).name);
                 ReactDOM.render((<HomeComponent />), document.getElementById("main-content"));
               }
               else
