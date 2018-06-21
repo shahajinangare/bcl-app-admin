@@ -19,7 +19,8 @@ class adminmenu extends React.Component {
     }
 
     logoutsubmit(event) {
-        ReactDOM.render((<MainContent />), document.getElementById("main-content"));
+        sessionStorage.clear();
+       // ReactDOM.render((<MainContent />), document.getElementById("main-content"));
     }
 
     componentDidMount() {
@@ -86,7 +87,7 @@ class adminmenu extends React.Component {
                             }
                         }
                         )}
-                   <li><a href='#'><span>Log Out</span></a></li>
+                   <li><a href='#' ><span>Log Out</span></a></li>
 
                     </ul>
                 </div>
