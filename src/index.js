@@ -6,8 +6,11 @@ import Footer from './components/common/footer';
 import MainContent from './components/common/maincontent';
 import registerServiceWorker from './registerServiceWorker';
 
+
 ReactDOM.render(<Header />, document.getElementById('header'));
 ReactDOM.render(<MainContent />, document.getElementById('main-content'));
 ReactDOM.render(<Footer />, document.getElementById('footer'));
 
 registerServiceWorker();
+
+
