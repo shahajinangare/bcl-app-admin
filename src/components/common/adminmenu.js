@@ -70,7 +70,7 @@ class adminmenu extends React.Component {
                         {this.state.data.map(itemmain => {
 
                             if (itemmain.parentid == -1) {
-                                return <li className='active has-sub' id={itemmain.id}>
+                                return <li className='has-sub' id={itemmain.id}>
                                     <a href='#'><span>{itemmain.menuname}</span></a>
                                     <ul>
                                         {this.state.data.map(subitem => {
@@ -84,7 +84,7 @@ class adminmenu extends React.Component {
                             }
                         }
                         )}
-
+                   <li><a href='#'><span>Log Out</span></a></li>
 
                     </ul>
                 </div>
