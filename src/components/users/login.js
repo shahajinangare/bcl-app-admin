@@ -5,6 +5,7 @@ import HomeComponent from '../../components/common/home';
 import ReactDOM from 'react-dom';
 import RegisterContent from '../../view/users/register';
 import ForgotpassContent from '../../components/users/forgotpass';
+import PasswordHash from 'password-hash';
 
 class Login extends Component {
 
@@ -25,6 +26,10 @@ class Login extends Component {
     }
 
     loginsubmit(event) {
+      var hashedPassword = PasswordHash.generate('password123');
+
+      console.log(hashedPassword);
+      
       event.preventDefault();
       fetch('http://localhost:7000/admin/login', {
         method: 'POST',
