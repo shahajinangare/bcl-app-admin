@@ -6,6 +6,7 @@ import ReactDOM from 'react-dom';
 import MenuContent from '../../components/common/adminmenu';
 import RegisterContent from '../../view/users/register';
 import ForgotpassContent from '../../components/users/forgotpass';
+import Register from '../../components/users/register';
 class Login extends Component {
 
   constructor(props) {
@@ -67,7 +68,7 @@ class Login extends Component {
     }
     registersubmit(event) {
      
-      ReactDOM.render((<RegisterContent />), document.getElementById("main-content"));  
+      ReactDOM.render((<Register />), document.getElementById("main-content"));  
     }
 
     render() {

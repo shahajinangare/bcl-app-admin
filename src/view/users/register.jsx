@@ -8,26 +8,26 @@ const RegisterContent = ({register}) => (
 		<div className="text-center" style={{padding:'50px 0'}}>
 			<div className="logo">register</div>
 			<div className="login-form-1">
-				<form id="register-form" className="text-left">
+				<form id="register-form" className="text-left" onSubmit={register.registersubmit}>
 					<div className="login-form-main-message"></div>
 					<div className="main-login-form">
 						<div className="login-group">
 							<div className="form-group">
 								<label htmlFor="reg_username" className="sr-only">Name</label>
-								<input type="text" className="form-control" id="reg_username" name="reg_username" placeholder="username"/>
+								<input type="text" className="form-control" id="regusername" name="regusername" placeholder="username"/>
 							</div>
 							<div className="form-group">
 								<label htmlFor="reg_password" className="sr-only">Emailid</label>
-								<input type="password" className="form-control" id="reg_password" name="reg_password" placeholder="emailid"/>
+								<input type="text" className="form-control" id="regemailid" name="regemailid" placeholder="emailid"/>
 							</div>
 							<div className="form-group">
 								<label htmlFor="reg_password_confirm" className="sr-only">Mobileno</label>
-								<input type="password" className="form-control" id="reg_password_confirm" name="reg_password_confirm" placeholder="mobileno"/>
+								<input type="text" className="form-control" id="regmobileno" name="regmobileno" placeholder="mobileno"/>
 							</div>
 							
 							<div className="form-group">
 								<label htmlFor="reg_email" className="sr-only">Bussinesscode</label>
-								<input type="text" className="form-control" id="reg_email" name="reg_email" placeholder="bussinesscode"/>
+								<input type="text" className="form-control" id="regbussinescode" name="regbussinescode" placeholder="bussinesscode"/>
 							</div>
 							
 							
