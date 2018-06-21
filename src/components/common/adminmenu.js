@@ -66,27 +66,25 @@ class adminmenu extends React.Component {
                     <ul>
                         <li><a href='#'><span>Home</span></a></li>
 
-                    
-                            {this.state.data.map(itemmain => {
 
-                                if (itemmain.parentid == -1) {                              
-                                    return <li className='active has-sub' id={itemmain.id}>                                    
-                                    <a href='#'><span>{itemmain.menuname}</span></a>       
+                        {this.state.data.map(itemmain => {
+
+                            if (itemmain.parentid == -1) {
+                                return <li className='active has-sub' id={itemmain.id}>
+                                    <a href='#'><span>{itemmain.menuname}</span></a>
                                     <ul>
-                              {this.state.data.map(subitem =>  {     
-                                if (subitem.parentid == itemmain.id && subitem.parentid != -1) {                                
-                                     return 
-                                       <li><a href='#' id={subitem.id} ><span>{subitem.menuname}</span></a></li>                                    
-                                  
-                                   }
-                                })}
-                                 </ul>                                   
-                             </li>
-                               
+                                        {this.state.data.map(subitem => {
+                                            if (subitem.parentid == itemmain.id && subitem.parentid != -1) {
+                                                return <li><a href='#' id={subitem.id} ><span>{subitem.menuname}</span></a></li>
+                                            }
+                                        })}
+                                    </ul>
+                                </li>
+
                             }
-                            }
-                            )}
-                 
+                        }
+                        )}
+
 
                     </ul>
                 </div>
