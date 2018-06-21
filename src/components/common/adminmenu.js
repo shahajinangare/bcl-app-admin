@@ -75,7 +75,7 @@ class adminmenu extends React.Component {
                                     <ul>
                                         {this.state.data.map(subitem => {
                                             if (subitem.parentid == itemmain.id && subitem.parentid != -1) {
-                                                return <li><a href='#' id={subitem.id} ><span>{subitem.menuname}</span></a></li>
+                                                return <li><a href={subitem.URL} id={subitem.id} ><span>{subitem.menuname}</span></a></li>
                                             }
                                         })}
                                     </ul>

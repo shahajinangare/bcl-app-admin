@@ -1,8 +1,10 @@
 import React from 'react';
 import Login from '../../components/users/login';
-import Forgetpassord from '../../components/users/forgotpass';
+//import MenuContent from '../../components/common/adminmenu'
+
 const MainContent = () => (
       <div>
+               
             <Login/> 
             
       </div>
