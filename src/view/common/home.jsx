@@ -4,8 +4,8 @@ import MenuContent from '../../components/common/adminmenu'
 const HomeComponent = () => (
       <div>
             <MenuContent/>
-            <div  ><br/><br/><br/><br/><br/><br/><br/>
-                  Welcome to Bajaj capital- service <br/><br/><br/><br/><br/><br/><br/>
+            <div style={{minHeight:'400px',padding:'10px 0'}}>
+                  Welcome to Bajaj capital- service
             </div>
       </div>
 

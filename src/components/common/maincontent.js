@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import Login from '../../components/users/login';
 import Register from '../../components/users/register';
 import Forgotpass from '../../components/users/forgotpass';
+import HomeComponent from '../../components/common/home';
 
 class MainComponent extends Component {
   render() {
@@ -14,6 +15,8 @@ class MainComponent extends Component {
             <Route exact path='/login' component={Login} />
             <Route exact path='/register' component={Register} />
             <Route exact path='/forgotpass' component={Forgotpass} />
+            <Route exact path='/home' component={HomeComponent} />
+           
           </Switch>
         </Router>
         <MainContent />

@@ -2,8 +2,9 @@ import React from 'react';
 
 const LoginContent = ({login}) => (
 	<div>
-		<div className="text-center" style={{padding:'50px 0'}}>
-			<div className="logo">login</div>
+		<div className="text-center" style={{padding:'10px 0'}}>
+			<div className="logo">Welcome to Bajaj Capital Admin Console</div>
+			
 			<div className="login-form-1">
 			<form  onSubmit={login.loginsubmit}>
 					<div className="login-form-main-message"></div>
@@ -24,7 +25,7 @@ const LoginContent = ({login}) => (
 					<div className="etc-login-form">
 						<p>forgot your password? <a href="#" onClick={login.forgotpasssubmit}  >click here</a></p>
 						<p>new user? <a href="#" onClick={login.registersubmit}>create new account</a></p>
-						<p>new user nilesh? <a href="./register" >create new account</a></p>
+					
 					</div>
 			</div>
 		</div>
