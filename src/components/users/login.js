@@ -5,7 +5,7 @@ import HomeComponent from '../../view/common/home';
 import ReactDOM from 'react-dom';
 import MenuContent from '../../components/common/adminmenu';
 import RegisterContent from '../../view/users/register';
-import ForgotpassContent from '../../view/users/forgotpass';
+import ForgotpassContent from '../../components/users/forgotpass';
 class Login extends Component {
 
   constructor(props) {
@@ -61,11 +61,12 @@ class Login extends Component {
     }
     
     forgotpasssubmit(event) {
-   // alert('forgot pass');
+    
       ReactDOM.render((<ForgotpassContent />), document.getElementById("main-content"));  
+     
     }
     registersubmit(event) {
-     // alert('RegisterContent');
+     
       ReactDOM.render((<RegisterContent />), document.getElementById("main-content"));  
     }
 
