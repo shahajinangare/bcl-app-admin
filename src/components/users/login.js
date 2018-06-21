@@ -3,7 +3,6 @@ import LoginContent from '../../view/users/logincontent';
 import '../../assets/stylesheets/login.css';
 import HomeComponent from '../../components/common/home';
 import ReactDOM from 'react-dom';
-import MenuContent from '../../components/common/adminmenu';
 import RegisterContent from '../../view/users/register';
 import ForgotpassContent from '../../components/users/forgotpass';
 
@@ -20,7 +19,6 @@ class Login extends Component {
       this.forgotpasssubmit = this.forgotpasssubmit.bind(this);
       this.registersubmit = this.registersubmit.bind(this);
 
-       
     }
     componentDidMount() {
 
@@ -60,20 +58,12 @@ class Login extends Component {
             console.error(error);
           });
     }
-    getmenu() {      
-      ReactDOM.render((<MenuContent />), document.getElementById("menu-root"));   
-    }
-    
     forgotpasssubmit(event) {
-    
       ReactDOM.render((<ForgotpassContent />), document.getElementById("main-content"));  
-     
     }
     registersubmit(event) {
-     
       ReactDOM.render((<RegisterContent />), document.getElementById("main-content"));  
     }
-
     render() {
       return (
           <LoginContent login={this}/>
