@@ -21,14 +21,18 @@ class index extends Component {
 
     ;
     }
-    render() {
-        return (
+    // render() {
+    //     console.log('userdet');
+    //     console.log(sessionStorage.getItem('userdet'));
+    //     if(sessionStorage.getItem('userdet') != null)
+    //     {
+    //     return (
+           
+    //         <MenuContent />
 
-            <MenuContent />
 
-
-        )
-    }
+    //     )}
+    // }
 }
 
 export default index;

@@ -61,7 +61,7 @@ class adminmenu extends React.Component {
 
         return (
 
-            <div id="menu-root">
+            // <div id="menu-root">
                 <div id='cssmenu'>
                     <ul>
                         <li><a href='#'><span>Home</span></a></li>
@@ -75,7 +75,7 @@ class adminmenu extends React.Component {
                                     <ul>
                                         {this.state.data.map(subitem => {
                                             if (subitem.parentid == itemmain.id && subitem.parentid != -1) {
-                                                return <li><a href={subitem.URL} id={subitem.id} ><span>{subitem.menuname}</span></a></li>
+                                                return <li><a href={subitem.URL}  ><span>{subitem.menuname}</span></a></li>
                                             }
                                         })}
                                     </ul>
@@ -88,7 +88,7 @@ class adminmenu extends React.Component {
 
                     </ul>
                 </div>
-            </div>
+          //  </div>
             // <MenuContent login={this}/>
         )
     }
