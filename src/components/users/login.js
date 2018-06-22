@@ -3,6 +3,7 @@ import LoginContent from '../../view/users/logincontent';
 import '../../assets/stylesheets/login.css';
 import HomeComponent from '../../components/common/home';
 import ReactDOM from 'react-dom';
+import ReactDOMServer from 'react-dom/server'
 import RegisterContent from '../../view/users/register';
 import ForgotpassContent from '../../components/users/forgotpass';
 import PasswordHash from 'password-hash';
@@ -54,7 +55,14 @@ class Login extends Component {
                // return <Redirect push to='/home'/>;
                this.navigateToPage;
 
-               // console.log(JSON.parse(sessionStorage.getItem('userdet')).name);
+                // ReactDOMServer.renderToString(
+                //   <HomeComponent />
+                // )
+               // <Redirect push to="/Forgotpass" />
+              //  return <Redirect to="/Forgotpass" />;
+
+               // <Redirect push to="/Forgotpass"/>
+                // console.log(JSON.parse(sessionStorage.getItem('userdet')).name);
                 ReactDOM.render((<HomeComponent />), document.getElementById("main-content"));
               }
               else

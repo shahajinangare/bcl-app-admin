@@ -1,8 +1,8 @@
 import React from 'react';
  
-
 const ForgotpassContent = ({vforgetpass}) => (
 	<div>
+		 
 		<div className="text-center" style={{padding:'50px 0'}}>
 			<div className="logo">forgot password</div>
 
