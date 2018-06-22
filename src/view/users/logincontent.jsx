@@ -3,15 +3,9 @@ import React from 'react';
 const LoginContent = ({login}) => (
 	
 	<div>
-<<<<<<< HEAD
-		 
-		<div className="text-center" style={{padding:'50px 0'}}>
-			<div className="logo">login</div>
-=======
 		<div className="text-center" style={{padding:'10px 0'}}>
 			<div className="logo">Welcome to Bajaj Capital Admin Console</div>
 			
->>>>>>> ef244cbc96398ed5aae5cceb2b21002c3b84ac15
 			<div className="login-form-1">
 			<form  onSubmit={login.loginsubmit}>
 					<div className="login-form-main-message"></div>

@@ -6,12 +6,8 @@ import ReactDOM from 'react-dom';
 import ReactDOMServer from 'react-dom/server'
 import RegisterContent from '../../view/users/register';
 import ForgotpassContent from '../../components/users/forgotpass';
-<<<<<<< HEAD
 import { Route, Redirect } from 'react-router'
-=======
 import PasswordHash from 'password-hash';
-import { router } from 'react-router';
->>>>>>> ef244cbc96398ed5aae5cceb2b21002c3b84ac15
 
 class Login extends Component {
 
@@ -28,7 +24,7 @@ class Login extends Component {
 
     }
     componentDidMount() {
-
+      sessionStorage.clear();
     }
     navigateToPage = () => {
       this.context.router.push('/home')
@@ -53,11 +49,11 @@ class Login extends Component {
       }).then((response) => response.json())
           .then((responseJson) => {
            // console.log(JSON.stringify(responseJson.result[0]));
-              if(responseJson.code = '200')
+              if(responseJson.code === 200)
               {
                 sessionStorage.setItem('userdet', JSON.stringify(responseJson.result[0]));
                // return <Redirect push to='/home'/>;
-               this.navigateToPage;
+              // this.navigateToPage;
 
                 // ReactDOMServer.renderToString(
                 //   <HomeComponent />
