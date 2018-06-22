@@ -3,8 +3,10 @@ import LoginContent from '../../view/users/logincontent';
 import '../../assets/stylesheets/login.css';
 import HomeComponent from '../../components/common/home';
 import ReactDOM from 'react-dom';
+import ReactDOMServer from 'react-dom/server'
 import RegisterContent from '../../view/users/register';
 import ForgotpassContent from '../../components/users/forgotpass';
+import { Route, Redirect } from 'react-router'
 
 class Login extends Component {
 
@@ -43,7 +45,14 @@ class Login extends Component {
               {
                 sessionStorage.setItem('userdet', JSON.stringify(responseJson.result[0]));
 
-               // console.log(JSON.parse(sessionStorage.getItem('userdet')).name);
+                // ReactDOMServer.renderToString(
+                //   <HomeComponent />
+                // )
+               // <Redirect push to="/Forgotpass" />
+              //  return <Redirect to="/Forgotpass" />;
+
+               // <Redirect push to="/Forgotpass"/>
+                // console.log(JSON.parse(sessionStorage.getItem('userdet')).name);
                 ReactDOM.render((<HomeComponent />), document.getElementById("main-content"));
               }
               else

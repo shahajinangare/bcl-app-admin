@@ -1,7 +1,8 @@
 import React from 'react';
-
+ 
 const LoginContent = ({login}) => (
 	<div>
+		 
 		<div className="text-center" style={{padding:'50px 0'}}>
 			<div className="logo">login</div>
 			<div className="login-form-1">
