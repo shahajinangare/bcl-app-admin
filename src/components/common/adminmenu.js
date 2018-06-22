@@ -65,11 +65,8 @@ class adminmenu extends React.Component {
 //Nilesh
         sessionStorage.setItem('menuloaded', 'Y');
     }
-    render() {
-      return(
-      this.getmenuhtml()
-    );
-}
+   
+
 }
 
 export default adminmenu;
