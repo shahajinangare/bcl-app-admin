@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import Login from '../../components/users/login';
 import Register from '../../components/users/register';
 import Forgotpass from '../../components/users/forgotpass';
-import TestApp from '../../components/test/testapp';
+import UserList from '../../components/users/userlist';
 import { Redirect } from 'react-router'
 class MainComponent extends Component {
   render() {
@@ -15,14 +15,13 @@ class MainComponent extends Component {
             <Route exact path='/login' component={Login}  />
             <Route exact path='/register' component={Register}  />
             <Route exact path='/forgotpass' component={Forgotpass} />
+            <Route exact path='/users' component={UserList} />
             {/* <Redirect to="/register" /> */}
-
-            
           </Switch>
-          
+       
         </Router>
         <MainContent />
-        <TestApp />
+
       </div>
     )
   }
