@@ -7,6 +7,7 @@ import MenuContent from '../../components/common/adminmenu';
 import RegisterContent from '../../view/users/register';
 import ForgotpassContent from '../../components/users/forgotpass';
 import Register from '../../components/users/register';
+import { deviceDetect } from 'react-device-detect';
 class Login extends Component {
 
   constructor(props) {
@@ -23,7 +24,8 @@ class Login extends Component {
        
     }
     componentDidMount() {
-
+      const deviceinfo= deviceDetect();
+      console.log(deviceinfo);
     }
 
     loginsubmit(event) {

@@ -14,23 +14,26 @@ const RegisterContent = ({register}) => (
 						<div className="login-group">
 							<div className="form-group">
 								<label htmlFor="reg_username" className="sr-only">Name</label>
-								<input type="text" className="form-control" id="regusername" name="regusername" placeholder="username"/>
+								<input type="text" className="form-control" id="regusername" name="regusername" autoComplete="off" placeholder="username"/>
 							</div>
 							<div className="form-group">
 								<label htmlFor="reg_password" className="sr-only">Emailid</label>
-								<input type="text" className="form-control" id="regemailid" name="regemailid" placeholder="emailid"/>
+								<input type="text" className="form-control" id="regemailid" name="regemailid" autoComplete="off" placeholder="emailid"/>
 							</div>
 							<div className="form-group">
 								<label htmlFor="reg_password_confirm" className="sr-only">Mobileno</label>
-								<input type="text" className="form-control" id="regmobileno" name="regmobileno" placeholder="mobileno"/>
+								<input type="text" className="form-control" id="regmobileno" name="regmobileno" autoComplete="off" placeholder="mobileno"/>
 							</div>
 							
 							<div className="form-group">
 								<label htmlFor="reg_email" className="sr-only">Bussinesscode</label>
-								<input type="text" className="form-control" id="regbussinescode" name="regbussinescode" placeholder="bussinesscode"/>
+								<input type="text" className="form-control" id="regbussinescode" name="regbussinescode" autoComplete="off" placeholder="bussinesscode"/>
 							</div>
-							
-							
+							<div className="form-group">
+							<select name="roleid" id="roleid" className="form-control">
+                              {register.state.roles.map((role) => <option key={role.roleid} value={role.roleid}>{role.rolename}</option>)}
+                            </select>
+							</div>
 							{/* <div className="form-group login-group-checkbox">
 								<input type="radio" className="" name="reg_gender" id="male" placeholder="username"/>
 								<label for="male">male</label>
