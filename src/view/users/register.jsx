@@ -6,7 +6,7 @@ const RegisterContent = ({register}) => (
 		hi shahaji
 		</div> */}
 		<div className="text-center" style={{padding:'50px 0'}}>
-			<div className="logo">register</div>
+			<div className="logo">Register</div>
 			<div className="login-form-1">
 				<form id="register-form" className="text-left" onSubmit={register.registersubmit}>
 					<div className="login-form-main-message"></div>
@@ -14,23 +14,23 @@ const RegisterContent = ({register}) => (
 						<div className="login-group">
 							<div className="form-group">
 								<label htmlFor="reg_username" className="sr-only">Name</label>
-								<input type="text" className="form-control" id="regusername" name="regusername" autoComplete="off" placeholder="username"/>
+								<input type="text" className="form-control" id="regusername" name="regusername" autoComplete="off" placeholder="username" required/>
 							</div>
 							<div className="form-group">
 								<label htmlFor="reg_password" className="sr-only">Emailid</label>
-								<input type="text" className="form-control" id="regemailid" name="regemailid" autoComplete="off" placeholder="emailid"/>
+								<input type="email" className="form-control" id="regemailid" name="regemailid" autoComplete="off" placeholder="emailid" required/>
 							</div>
 							<div className="form-group">
 								<label htmlFor="reg_password_confirm" className="sr-only">Mobileno</label>
-								<input type="text" className="form-control" id="regmobileno" name="regmobileno" autoComplete="off" placeholder="mobileno"/>
+								<input type="tel" pattern="[0-9]{10}" className="form-control" maxLength="10" id="regmobileno" name="regmobileno" autoComplete="off" placeholder="mobileno" required/>
 							</div>
 							
 							<div className="form-group">
 								<label htmlFor="reg_email" className="sr-only">Bussinesscode</label>
-								<input type="text" className="form-control" id="regbussinescode" name="regbussinescode" autoComplete="off" placeholder="bussinesscode"/>
+								<input type="text" className="form-control" id="regbussinescode" name="regbussinescode" autoComplete="off" placeholder="bussinesscode" required/>
 							</div>
 							<div className="form-group">
-							<select name="roleid" id="roleid" className="form-control">
+							<select name="roleid" id="roleid" className="form-control" required>
                               {register.state.roles.map((role) => <option key={role.roleid} value={role.roleid}>{role.rolename}</option>)}
                             </select>
 							</div>
