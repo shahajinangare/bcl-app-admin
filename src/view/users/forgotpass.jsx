@@ -22,8 +22,8 @@ const ForgotpassContent = ({vforgetpass}) => (
 						<button type="submit" className="login-button"><i className="fa fa-chevron-right"></i></button>
 					</div></form>
 					<div className="etc-login-form">
-						<p>already have an account? <a href="#"  onClick={vforgetpass.loginview}  >login here</a></p>
-						<p>new user? <a href="#" onClick={vforgetpass.registerview} >create new account</a></p>
+						<p>already have an account? <a href=""  onClick={vforgetpass.loginview}  >login here</a></p>
+						<p>new user? <a href="" onClick={vforgetpass.registerview} >create new account</a></p>
 					</div>
 				
 			</div>

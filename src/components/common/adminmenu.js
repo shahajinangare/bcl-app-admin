@@ -1,8 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 import '../../assets/stylesheets/menu.css';
-import ReactDOM from 'react-dom';
-import MainContent from '../../view/common/maincontent';
-import MenuContent from '../../view/common/adminmenu';
+
 
 
 class adminmenu extends React.Component {
@@ -59,24 +57,25 @@ class adminmenu extends React.Component {
     render() {
     
       // alert(sessionStorage.getItem('userdet'));
-       if(sessionStorage.getItem('userdet') != null && sessionStorage.getItem('menuloaded')  != null )
+       if(sessionStorage.getItem('userdet') !== null && sessionStorage.getItem('menuloaded')  !== null )
        {
+           alert('aa');
         return (
 
             // <div id="menu-root">
                 <div id='cssmenu'>
                     <ul>
-                        <li><a href='#'><span>Home</span></a></li>
+                        <li><a href=''><span>Home</span></a></li>
 
 
                         {this.state.data.map(itemmain => {
 
-                            if (itemmain.parentid == -1) {
+                            if (itemmain.parentid === -1) {
                                 return <li className='has-sub' id={itemmain.id}>
-                                    <a href='#'><span>{itemmain.menuname}</span></a>
+                                    <a href=''><span>{itemmain.menuname}</span></a>
                                     <ul>
                                         {this.state.data.map(subitem => {
-                                            if (subitem.parentid == itemmain.id && subitem.parentid != -1) {
+                                            if (subitem.parentid === itemmain.id && subitem.parentid !== -1) {
                                                 return <li><a href={subitem.URL}  ><span>{subitem.menuname}</span></a></li>
                                             }
                                         })}
@@ -86,7 +85,7 @@ class adminmenu extends React.Component {
                             }
                         }
                         )}
-                   <li><a href='#' ><span>Log Out</span></a></li>
+                   <li><a href='' ><span>Log Out</span></a></li>
 
                     </ul>
                 </div>

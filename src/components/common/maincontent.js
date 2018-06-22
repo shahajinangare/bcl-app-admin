@@ -16,8 +16,9 @@ class MainComponent extends Component {
             <Route exact path='/register' component={Register} />
             <Route exact path='/forgotpass' component={Forgotpass} />
             <Route exact path='/home' component={HomeComponent} />
-           
+     
           </Switch>
+       
         </Router>
         <MainContent />
 
