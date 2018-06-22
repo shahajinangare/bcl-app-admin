@@ -8,12 +8,11 @@ class adminmenu extends React.Component {
 
     constructor(props) {
         super(props);
-
-        this.state = {
-            data: []
+         
+                this.state = {           
         };
+
         this.logoutsubmit = this.logoutsubmit.bind(this);
-        //this.getmenubyrole = this.getmenubyrole.bind(this);
     }
 
     logoutsubmit() {
@@ -22,8 +21,7 @@ class adminmenu extends React.Component {
       Response.redirect('/login');
     }
 
-    componentDidMount() {
-        //   alert('componentDidMount');
+    getmenubyrole() {           
         fetch('http://localhost:7000/admin/getmenubyrole', {
             method: 'POST',
             headers: {
@@ -37,15 +35,17 @@ class adminmenu extends React.Component {
             }),
         }).then((response) => response.json())
             .then((responseJson) => {
-                //  console.log(responseJson.result);
+                console.log(responseJson);
                 this.setState({
-                    data: responseJson.result
+                    ErrorMsg: responseJson.message
                 });
-                // console.log(this.state.data);
-                // responseJson.result.forEach(element => {
-                //    // console.log(element);
-                // });
-                // return responseJson.result;
+      
+                responseJson.result.forEach(element => {                   
+                    
+                    console.log(element);
+                   
+                });
+               // return responseJson.result;
             })
             .catch((error) => {
                 console.error(error);
@@ -65,6 +65,11 @@ class adminmenu extends React.Component {
 //Nilesh
         sessionStorage.setItem('menuloaded', 'Y');
     }
+    render() {
+      return(
+      this.getmenuhtml()
+    );
+}
 }
 
 export default adminmenu;

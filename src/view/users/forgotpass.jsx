@@ -16,7 +16,7 @@ const ForgotpassContent = ({vforgetpass}) => (
 						<div className="login-group">
 							<div className="form-group">
 								<label htmlFor="fp_email" className="sr-only">Email address</label>
-								<input type="email" className="form-control" id="emailid" name="emailid" placeholder="email address" required maxLength="20" autocomplete="disabled"/>
+								<input type="text" className="form-control" id="fp_email" name="fp_email" placeholder="email address"/>
 							</div>
 						</div>
 						<button type="submit" className="login-button"><i className="fa fa-chevron-right"></i></button>

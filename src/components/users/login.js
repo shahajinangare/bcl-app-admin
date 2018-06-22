@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import LoginContent from '../../view/users/logincontent';
 import '../../assets/stylesheets/login.css';
-import HomeComponent from '../../components/common/home';
+import HomeComponent from '../../view/common/home';
 import ReactDOM from 'react-dom';
 import ReactDOMServer from 'react-dom/server'
 import RegisterContent from '../../view/users/register';
