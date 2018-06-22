@@ -4,6 +4,7 @@ import { DataTable } from 'react-data-components';
 //import {Table, Column, Cell,TableHeader} from 'fixed-data-table';
 import ReactTable from "react-table";
 import "react-table/react-table.css";
+
 var columns = [
     { title: 'userid', prop: 'userid' },
     { title: 'NAME', prop: 'NAME' },
