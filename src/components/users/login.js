@@ -6,6 +6,7 @@ import ReactDOM from 'react-dom';
 import RegisterContent from '../../view/users/register';
 import ForgotpassContent from '../../components/users/forgotpass';
 import PasswordHash from 'password-hash';
+import { router } from 'react-router';
 
 class Login extends Component {
 
@@ -24,12 +25,15 @@ class Login extends Component {
     componentDidMount() {
 
     }
-
+    navigateToPage = () => {
+      this.context.router.push('/home')
+    };
+  
     loginsubmit(event) {
-      var hashedPassword = PasswordHash.generate('password123');
+      var hashedPassword = PasswordHash.generate(event.target.password.value)
 
       console.log(hashedPassword);
-      
+
       event.preventDefault();
       fetch('http://localhost:7000/admin/login', {
         method: 'POST',
@@ -47,6 +51,8 @@ class Login extends Component {
               if(responseJson.code = '200')
               {
                 sessionStorage.setItem('userdet', JSON.stringify(responseJson.result[0]));
+               // return <Redirect push to='/home'/>;
+               this.navigateToPage;
 
                // console.log(JSON.parse(sessionStorage.getItem('userdet')).name);
                 ReactDOM.render((<HomeComponent />), document.getElementById("main-content"));

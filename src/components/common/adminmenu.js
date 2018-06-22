@@ -57,10 +57,9 @@ class adminmenu extends React.Component {
 
 
     render() {
-     //   console.log('render data');
-      //  console.log(this.state.data);
+    
       // alert(sessionStorage.getItem('userdet'));
-       if(sessionStorage.getItem('userdet') != null)
+       if(sessionStorage.getItem('userdet') != null && sessionStorage.getItem('menuloaded')  != null )
        {
         return (
 
@@ -91,11 +90,13 @@ class adminmenu extends React.Component {
 
                     </ul>
                 </div>
-          //  </div>
-            // <MenuContent login={this}/>
-        )}
+     
+        ) }
         else
-        return null;
+      {  return null;}
+
+      
+      sessionStorage.setItem('menuloaded', 'Y');
     }
 }
 

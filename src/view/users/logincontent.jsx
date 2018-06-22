@@ -1,6 +1,7 @@
 import React from 'react';
 
 const LoginContent = ({login}) => (
+	
 	<div>
 		<div className="text-center" style={{padding:'10px 0'}}>
 			<div className="logo">Welcome to Bajaj Capital Admin Console</div>
@@ -29,6 +30,8 @@ const LoginContent = ({login}) => (
 					</div>
 			</div>
 		</div>
+
+		 <button onClick={login.navigateToPage}>Go!</button>
 </div>
 );
 
