@@ -56,8 +56,8 @@ class adminmenu extends React.Component {
 
     render() {
     
-      // alert(sessionStorage.getItem('userdet'));
-       if(sessionStorage.getItem('userdet') !== null && sessionStorage.getItem('menuloaded')  !== null )
+     //  alert(sessionStorage.getItem('userdet'));
+       if(sessionStorage.getItem('userdet') != null)
        {
            alert('aa');
         return (
