@@ -8,10 +8,9 @@
 }
 
 .App-header {
-  background-color: #222;
+     background-color: #ffffff;
   height: 100px;
-  padding: 20px;
-  color: white;
+  padding: 20px; 
 }
 
 .App-title {
@@ -25,4 +24,14 @@
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+.footer_border {
+  width: 1020;
+  height: 6px;
+  background: url(../images/footer_strip.png) repeat;
+}
+.footer_main {
+  width: 1020px;
+  height: auto;
+  margin: 0 auto;
 }

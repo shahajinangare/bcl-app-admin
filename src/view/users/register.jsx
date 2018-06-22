@@ -50,7 +50,7 @@ const RegisterContent = ({register}) => (
 						<button type="submit" className="login-button" ><i className="fa fa-chevron-right"></i></button>
 					</div>
 					<div className="etc-login-form">
-						<p>already have an account? <a href="#" onClick={register.loginview}>login here</a></p>
+						<p>already have an account? <a href="" onClick={register.loginview}>login here</a></p>
 					</div>
 				</form>
 			</div>

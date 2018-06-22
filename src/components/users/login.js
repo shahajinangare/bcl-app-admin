@@ -3,11 +3,12 @@ import LoginContent from '../../view/users/logincontent';
 import '../../assets/stylesheets/login.css';
 import HomeComponent from '../../view/common/home';
 import ReactDOM from 'react-dom';
-import MenuContent from '../../components/common/adminmenu';
+import ReactDOMServer from 'react-dom/server'
 import RegisterContent from '../../view/users/register';
 import ForgotpassContent from '../../components/users/forgotpass';
-import Register from '../../components/users/register';
-import { deviceDetect } from 'react-device-detect';
+import { Route, Redirect } from 'react-router'
+import PasswordHash from 'password-hash';
+
 class Login extends Component {
 
   constructor(props) {
@@ -21,14 +22,19 @@ class Login extends Component {
       this.forgotpasssubmit = this.forgotpasssubmit.bind(this);
       this.registersubmit = this.registersubmit.bind(this);
 
-       
     }
     componentDidMount() {
-      const deviceinfo= deviceDetect();
-      console.log(deviceinfo);
+      sessionStorage.clear();
     }
-
+    navigateToPage = () => {
+      this.context.router.push('/home')
+    };
+  
     loginsubmit(event) {
+      var hashedPassword = PasswordHash.generate(event.target.password.value)
+
+      console.log(hashedPassword);
+
       event.preventDefault();
       fetch('http://localhost:7000/admin/login', {
         method: 'POST',
@@ -42,9 +48,21 @@ class Login extends Component {
         }),
       }).then((response) => response.json())
           .then((responseJson) => {
-            console.log(responseJson);
-              if(responseJson.code = '200')
+           // console.log(JSON.stringify(responseJson.result[0]));
+              if(responseJson.code === 200)
               {
+                sessionStorage.setItem('userdet', JSON.stringify(responseJson.result[0]));
+               // return <Redirect push to='/home'/>;
+              // this.navigateToPage;
+
+                // ReactDOMServer.renderToString(
+                //   <HomeComponent />
+                // )
+               // <Redirect push to="/Forgotpass" />
+              //  return <Redirect to="/Forgotpass" />;
+
+               // <Redirect push to="/Forgotpass"/>
+                // console.log(JSON.parse(sessionStorage.getItem('userdet')).name);
                 ReactDOM.render((<HomeComponent />), document.getElementById("main-content"));
               }
               else
@@ -59,20 +77,12 @@ class Login extends Component {
             console.error(error);
           });
     }
-    getmenu() {      
-      ReactDOM.render((<MenuContent />), document.getElementById("menu-root"));   
-    }
-    
     forgotpasssubmit(event) {
-    
       ReactDOM.render((<ForgotpassContent />), document.getElementById("main-content"));  
-     
     }
     registersubmit(event) {
-     
-      ReactDOM.render((<Register />), document.getElementById("main-content"));  
+      ReactDOM.render((<RegisterContent />), document.getElementById("main-content"));  
     }
-
     render() {
       return (
           <LoginContent login={this}/>

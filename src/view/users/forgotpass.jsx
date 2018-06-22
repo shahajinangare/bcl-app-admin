@@ -1,14 +1,17 @@
 import React from 'react';
  
-
 const ForgotpassContent = ({vforgetpass}) => (
 	<div>
+<<<<<<< HEAD
 		{/* <div class="text-center" style={{padding:'50px 0'}}>
 		hi shahaji
 		</div> */}
 		
 
 
+=======
+		 
+>>>>>>> e979b109d2204f66969a035d6c1dc4295d9fda31
 		<div className="text-center" style={{padding:'50px 0'}}>
 			<div className="logo">forgot password</div>
 
@@ -28,8 +31,8 @@ const ForgotpassContent = ({vforgetpass}) => (
 						<button type="submit" className="login-button"><i className="fa fa-chevron-right"></i></button>
 					</div></form>
 					<div className="etc-login-form">
-						<p>already have an account? <a href="#"  onClick={vforgetpass.loginview}  >login here</a></p>
-						<p>new user? <a href="#" onClick={vforgetpass.registerview} >create new account</a></p>
+						<p>already have an account? <a href=""  onClick={vforgetpass.loginview}  >login here</a></p>
+						<p>new user? <a href="" onClick={vforgetpass.registerview} >create new account</a></p>
 					</div>
 				
 			</div>

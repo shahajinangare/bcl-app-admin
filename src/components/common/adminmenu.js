@@ -1,8 +1,11 @@
-import React, { Component } from 'react';
+import React from 'react';
 import '../../assets/stylesheets/menu.css';
-import ReactDOM from 'react-dom';
-import MainContent from '../../view/common/maincontent';
-class adminmenu extends Component {
+import MenuContent from '../../view/common/adminmenu';
+
+
+class adminmenu extends React.Component {
+    data = [];
+
     constructor(props) {
         super(props);
          
@@ -11,9 +14,11 @@ class adminmenu extends Component {
 
         this.logoutsubmit = this.logoutsubmit.bind(this);
     }
-    logoutsubmit(event) {
-        // alert('forgot pass');
-           ReactDOM.render((<MainContent />), document.getElementById("main-content"));  
+
+    logoutsubmit() {
+        sessionStorage.clear();
+        // ReactDOM.render((<MainContent />), document.getElementById("main-content"));
+      Response.redirect('/login');
     }
 
     getmenubyrole() {           
@@ -46,37 +51,19 @@ class adminmenu extends Component {
                 console.error(error);
             });
     }
+    render() {
 
-    getmenuhtml() {
-       
-        return (
- 
-            <div id='cssmenu'>
-                 <ul>
-                     <li><a href='#'><span>Home</span></a></li>
-                     <li className='active has-sub'><a href='#'><span>Products</span></a>
-                         <ul>
-                             <li className='has-sub'><a href='#'><span>Product 1</span></a>
-                                 <ul>
-                                     <li><a href='#'><span>Sub Product</span></a></li>
-                                     <li className='last'><a href='#'><span>Sub Product</span></a></li>
-                                 </ul>
-                             </li>
-                             <li className='has-sub'><a href='#'><span>Product 2</span></a>
-                                 <ul>
-                                     <li><a href='#'><span>Sub Product</span></a></li>
-                                     <li className='last'><a href='#'><span>Sub Product</span></a></li>
-                                 </ul>
-                             </li>
-                         </ul>
-                     </li>
-                     <li><a href='#'><span>About</span></a></li>
-                     <li className='last'><a href='#'><span>Contact</span></a></li> 
-                     <li className='last'><a href='#' onClick={this.logoutsubmit} ><span>Log Out</span></a></li>
-                 </ul>
-             </div>
-            
-        )
+        //  alert(sessionStorage.getItem('userdet'));
+        if (sessionStorage.getItem('userdet') != null) {
+
+            return (
+              <MenuContent menuaccess={this}/>
+            )
+        }
+        else { return null; }
+
+
+        sessionStorage.setItem('menuloaded', 'Y');
     }
     render() {
       return(
