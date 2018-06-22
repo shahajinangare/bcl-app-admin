@@ -1,6 +1,6 @@
 import React from 'react';
 import '../../assets/stylesheets/menu.css';
-
+import MenuContent from '../../view/common/adminmenu';
 
 
 class adminmenu extends React.Component {
@@ -16,9 +16,10 @@ class adminmenu extends React.Component {
         //this.getmenubyrole = this.getmenubyrole.bind(this);
     }
 
-    logoutsubmit(event) {
+    logoutsubmit() {
         sessionStorage.clear();
-       // ReactDOM.render((<MainContent />), document.getElementById("main-content"));
+        // ReactDOM.render((<MainContent />), document.getElementById("main-content"));
+      Response.redirect('/login');
     }
 
     componentDidMount() {
@@ -50,52 +51,19 @@ class adminmenu extends React.Component {
                 console.error(error);
             });
     }
-
-
-
-
     render() {
-    
-     //  alert(sessionStorage.getItem('userdet'));
-       if(sessionStorage.getItem('userdet') != null)
-       {
-          // alert('aa');
-        return (
 
-            // <div id="menu-root">
-                <div id='cssmenu'>
-                    <ul>
-                        <li><a href=''><span>Home</span></a></li>
+        //  alert(sessionStorage.getItem('userdet'));
+        if (sessionStorage.getItem('userdet') != null) {
+
+            return (
+              <MenuContent menuaccess={this}/>
+            )
+        }
+        else { return null; }
 
 
-                        {this.state.data.map(itemmain => {
-
-                            if (itemmain.parentid === -1) {
-                                return <li className='has-sub' id={itemmain.id}>
-                                    <a href=''><span>{itemmain.menuname}</span></a>
-                                    <ul>
-                                        {this.state.data.map(subitem => {
-                                            if (subitem.parentid === itemmain.id && subitem.parentid !== -1) {
-                                                return <li><a href={subitem.URL}  ><span>{subitem.menuname}</span></a></li>
-                                            }
-                                        })}
-                                    </ul>
-                                </li>
-
-                            }
-                        }
-                        )}
-                   <li><a href='' ><span>Log Out</span></a></li>
-
-                    </ul>
-                </div>
-     
-        ) }
-        else
-      {  return null;}
-
-      
-      sessionStorage.setItem('menuloaded', 'Y');
+        sessionStorage.setItem('menuloaded', 'Y');
     }
 }
 

@@ -22,16 +22,13 @@ class index extends Component {
     ;
     }
     // render() {
-    //     console.log('userdet');
-    //     console.log(sessionStorage.getItem('userdet'));
-    //     if(sessionStorage.getItem('userdet') != null)
-    //     {
-    //     return (
-           
-    //         <MenuContent />
+      
+    //    alert(sessionStorage.getItem('userdet'));
+    //    return(
 
-
-    //     )}
+    //     <div>
+    //     </div>
+    //    )
     // }
 }
 
