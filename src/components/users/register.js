@@ -14,6 +14,7 @@ class Register extends Component {
       this.state = {
       ErrorMsg:'',
       roles:[],
+      type:'',
       };
     
       this.registersubmit = this.registersubmit.bind(this);
@@ -39,6 +40,9 @@ class Register extends Component {
               {
                 let RolesFromApi = responseJson.result.map(role => { return {roleid: role.roleid, rolename: role.rolename} })
                 this.setState({ roles: [{roleid: '', rolename: 'Select role'}].concat(RolesFromApi) });
+                this.setState({
+                  type:'new1'
+                })
               }
               else
               {

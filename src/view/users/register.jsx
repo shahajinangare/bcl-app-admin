@@ -5,7 +5,8 @@ const RegisterContent = ({register}) => (
 		{/* <div class="text-center" style={{padding:'50px 0'}}>
 		hi shahaji
 		</div> */}
-		<div className="text-center" style={{padding:'50px 0'}}>
+		
+		<div id="divadduser" className="text-center" style={{padding:'50px 0'}}>
 			<div className="logo">Register</div>
 			<div className="login-form-1">
 				<form id="register-form" className="text-left" onSubmit={register.registersubmit}>
@@ -56,6 +57,7 @@ const RegisterContent = ({register}) => (
 			</div>
 
 		</div>
+		
 </div>
 );
 
