@@ -62,7 +62,7 @@ class adminmenu extends React.Component {
         }
         else { return null; }
 
-
+//Nilesh
         sessionStorage.setItem('menuloaded', 'Y');
     }
 }
