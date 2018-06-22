@@ -1,8 +1,8 @@
 import React from 'react';
 import '../../assets/stylesheets/menu.css';
-
-
-
+import ReactDOM from 'react-dom';
+import ReactDOMServer from 'react-dom/server'
+import MainContent from '../../components/common/maincontent'
 class adminmenu extends React.Component {
     data = [];
 
@@ -18,7 +18,7 @@ class adminmenu extends React.Component {
 
     logoutsubmit(event) {
         sessionStorage.clear();
-        // ReactDOM.render((<MainContent />), document.getElementById("main-content"));
+         ReactDOM.render((<MainContent />), document.getElementById("main-content"));
     }
 
     componentDidMount() {
@@ -78,7 +78,7 @@ class adminmenu extends React.Component {
                             }
                         }
                         )}
-                        <li><a href='' ><span>Log Out</span></a></li>
+                        <li><a href='' onClick={this.logoutsubmit} ><span>Log Out</span></a></li>
                     </ul>
                 </div>
 
