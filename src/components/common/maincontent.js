@@ -16,6 +16,7 @@ class MainComponent extends Component {
             <Route exact path='/forgotpass' component={Forgotpass} />
             {/* <Redirect to="/register" /> */}
           </Switch>
+       
         </Router>
         <MainContent />
 
