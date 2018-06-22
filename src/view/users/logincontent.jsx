@@ -4,7 +4,7 @@ const LoginContent = ({login}) => (
 	
 	<div>
 		<div className="text-center" style={{padding:'10px 0'}}>
-			<div className="logo">Welcome to Bajaj Capital Admin Console</div>
+		
 			
 			<div className="login-form-1">
 			<form  onSubmit={login.loginsubmit}>

@@ -6,11 +6,11 @@ class Header extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          {
-            <img src={logo} alt="logo" />}
-       
+        <header className="App-header">          
+            <img src={logo} alt="logo"   />      	    
+            <div className="headertext">Welcome to Bajaj Capital Admin Console</div>
         </header>
+       
       </div>
     );
   }
