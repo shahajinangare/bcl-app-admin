@@ -1,6 +1,6 @@
 import React from 'react';
 import '../../assets/stylesheets/menu.css';
-import MenuContent from '../../view/common/adminmenu';
+
 
 
 class adminmenu extends React.Component {
@@ -8,20 +8,21 @@ class adminmenu extends React.Component {
 
     constructor(props) {
         super(props);
-         
-                this.state = {           
-        };
 
+        this.state = {
+            data: []
+        };
         this.logoutsubmit = this.logoutsubmit.bind(this);
+        //this.getmenubyrole = this.getmenubyrole.bind(this);
     }
 
-    logoutsubmit() {
+    logoutsubmit(event) {
         sessionStorage.clear();
         // ReactDOM.render((<MainContent />), document.getElementById("main-content"));
-      Response.redirect('/login');
     }
 
-    getmenubyrole() {           
+    componentDidMount() {
+        //   alert('componentDidMount');
         fetch('http://localhost:7000/admin/getmenubyrole', {
             method: 'POST',
             headers: {
@@ -35,38 +36,59 @@ class adminmenu extends React.Component {
             }),
         }).then((response) => response.json())
             .then((responseJson) => {
-                console.log(responseJson);
+                //  console.log(responseJson.result);
                 this.setState({
-                    ErrorMsg: responseJson.message
+                    data: responseJson.result
                 });
-      
-                responseJson.result.forEach(element => {                   
-                    
-                    console.log(element);
-                   
-                });
-               // return responseJson.result;
+                // console.log(this.state.data);
+                // responseJson.result.forEach(element => {
+                //    // console.log(element);
+                // });
+                // return responseJson.result;
             })
             .catch((error) => {
                 console.error(error);
             });
     }
+
+
+
+
     render() {
 
         //  alert(sessionStorage.getItem('userdet'));
         if (sessionStorage.getItem('userdet') != null) {
 
             return (
-              <MenuContent menuaccess={this}/>
+                <div id='cssmenu'>
+                    <ul>
+                        <li><a href=''><span>Home</span></a></li>
+                        {this.state.data.map(itemmain => {
+                            if (itemmain.parentid === -1) {
+                                return <li className='has-sub' id={itemmain.id}>
+                                    <a href=''><span>{itemmain.menuname}</span></a>
+                                    <ul>
+                                        {this.state.data.map(subitem => {
+                                            if (subitem.parentid === itemmain.id && subitem.parentid !== -1) {
+                                                return <li><a href={subitem.URL}  ><span>{subitem.menuname}</span></a></li>
+                                            }
+                                        })}
+                                    </ul>
+                                </li>
+                            }
+                        }
+                        )}
+                        <li><a href='' ><span>Log Out</span></a></li>
+                    </ul>
+                </div>
+
             )
         }
         else { return null; }
 
-//Nilesh
+
         sessionStorage.setItem('menuloaded', 'Y');
     }
-   
-
 }
 
 export default adminmenu;
