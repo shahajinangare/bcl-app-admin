@@ -12,8 +12,13 @@ class Register extends Component {
    constructor(props) {
     super(props);
 
-    const params = new URLSearchParams(props.location.search);
-    const id = params.get('id');
+    //const params = new URLSearchParams(props.location.search);
+    let id=null;
+    if(props.register != undefined)
+    {
+      id= props.register.row._original.userid;
+    }
+    
     
     
       this.state = {
