@@ -40,6 +40,7 @@ const UserListContent = ({userdata}) => (
                     {
                         Header: "Mobile No",
                         accessor: "mobileno",
+                        width: 150,
                         filterMethod: (filter, row) =>
                             row[filter.id].startsWith(filter.value) ||
                             row[filter.id].endsWith(filter.value)
@@ -47,6 +48,8 @@ const UserListContent = ({userdata}) => (
                     },
                     {
                         Header: 'Actions',
+                        filterable:false,
+                        width: 100,
                         Cell:
                             selectedrow => {
                                 if (selectedrow.original.isactive === 'N') {
@@ -72,6 +75,8 @@ const UserListContent = ({userdata}) => (
                     },
                     {
                         Header: 'Unlock',
+                        filterable:false,
+                        width: 70,
                         Cell:
                             selectedrow => {
                                 if (selectedrow.original.lockstatus === 'Y') {
@@ -87,6 +92,8 @@ const UserListContent = ({userdata}) => (
                     },
                     {
                         Header: 'Edit',
+                        filterable:false,
+                        width: 70,
                         Cell:
                             selectedrow => {
                                 return (
