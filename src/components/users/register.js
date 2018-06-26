@@ -37,6 +37,7 @@ class Register extends Component {
       this.registersubmit = this.registersubmit.bind(this);
       this.Updatesubmit = this.Updatesubmit.bind(this);
       this.loginview = this.loginview.bind(this);
+      this.handleSelectChange = this.handleSelectChange.bind(this);
       
     }
     
@@ -49,7 +50,9 @@ class Register extends Component {
       }
                 
     }
-
+    handleSelectChange(event) {
+     this.setState({upd_userroleid: event.target.value});
+    }
      getAllrole(){
       fetch('http://localhost:7000/admin/getroles', {
         method: 'GET',

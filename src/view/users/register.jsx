@@ -85,7 +85,7 @@ const RegisterContent = ({register}) => (
 								<input type="text" className="form-control" id="uptbussinescode" name="uptbussinescode" autoComplete="off" placeholder="bussinesscodes" required defaultValue={register.state.upd_userbussinesscode}/>
 							</div>
 							<div className="form-group">
-							<select name="updroleid" id="updroleid" className="form-control" required value={register.state.upd_userroleid} >
+							<select name="updroleid" id="updroleid" className="form-control" required value={register.state.upd_userroleid} onChange={register.handleSelectChange} >
                               {register.state.roles.map((role) => <option key={role.roleid} value={role.roleid}>{role.rolename}</option>)}
                             </select>
 							</div>
