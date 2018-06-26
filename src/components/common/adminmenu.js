@@ -1,8 +1,9 @@
 import React from 'react';
 import '../../assets/stylesheets/menu.css';
 import ReactDOM from 'react-dom';
-import ReactDOMServer from 'react-dom/server'
-import MainContent from '../../components/common/maincontent'
+import ReactDOMServer from 'react-dom/server';
+import MainContent from '../../components/common/maincontent';
+import MenuContent from '../../view/common/adminmenu';
 class adminmenu extends React.Component {
     data = [];
 
@@ -17,7 +18,7 @@ class adminmenu extends React.Component {
     }
 
     logoutsubmit(event) {
-        sessionStorage.clear();
+         sessionStorage.clear();
          ReactDOM.render((<MainContent />), document.getElementById("main-content"));
     }
 
@@ -60,27 +61,7 @@ class adminmenu extends React.Component {
         if (sessionStorage.getItem('userdet') != null) {
 
             return (
-                <div id='cssmenu'>
-                    <ul>
-                        <li><a href=''><span>Home</span></a></li>
-                        {this.state.data.map(itemmain => {
-                            if (itemmain.parentid === -1) {
-                                return <li className='has-sub' id={itemmain.id}>
-                                    <a href=''><span>{itemmain.menuname}</span></a>
-                                    <ul>
-                                        {this.state.data.map(subitem => {
-                                            if (subitem.parentid === itemmain.id && subitem.parentid !== -1) {
-                                                return <li><a href={subitem.URL}  ><span>{subitem.menuname}</span></a></li>
-                                            }
-                                        })}
-                                    </ul>
-                                </li>
-                            }
-                        }
-                        )}
-                        <li><a href='' onClick={this.logoutsubmit} ><span>Log Out</span></a></li>
-                    </ul>
-                </div>
+                <MenuContent menuaccess={this} />
 
             )
         }

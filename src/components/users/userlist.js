@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import UserListContent from '../../view/users/userlist';
 import ReactTable from "react-table";
-import VWRegisterContent from "../../view/users/register";
+import VWRegisterContent from "../../components/users/register";
 import "react-table/react-table.css";
-import PopoutWindowut from 'react-popout';
+import ReactDOM from 'react-dom';
 
 class UserList extends Component {
 
@@ -106,129 +106,15 @@ class UserList extends Component {
     }
 
     editusers(selectedrow) {
-
-        return 
-        <PopoutWindowut containerId='tearoff'>
-    <VWRegisterContent register={this}/>
-</PopoutWindowut>
-      
+        ReactDOM.render((<VWRegisterContent register={selectedrow} />), document.getElementById("main-content"));
 
     }
 
 
 
     render() {
-        console.log(this.state.outData);
-        return <div>
-            <br />
-            <br />
-            <br />
-            <br />
-            <ReactTable
-                data={this.state.outData}
-                filterable
-                defaultFilterMethod={(filter, row) =>
-                    String(row[filter.id.toLowerCase]) === filter.value.toLowerCase}
-                columns={[
-                    {
-                        Header: "Name",
-                        accessor: "NAME",
-                        filterMethod: (filter, row) =>
-                            row[filter.id].startsWith(filter.value) ||
-                            row[filter.id].endsWith(filter.value)
-                        // filterAll: true
-                    },
-                    {
-                        Header: "Email",
-                        accessor: "emailid",
-                        filterMethod: (filter, row) =>
-                            row[filter.id].startsWith(filter.value) ||
-                            row[filter.id].endsWith(filter.value)
 
-
-                    },
-                    {
-                        Header: "Mobile No",
-                        accessor: "mobileno",
-                        filterMethod: (filter, row) =>
-                            row[filter.id].startsWith(filter.value) ||
-                            row[filter.id].endsWith(filter.value)
-
-                    },
-                    {
-                        Header: 'Actions',
-                        Cell:
-                            selectedrow => {
-                                if (selectedrow.original.isactive === 'N') {
-                                    return (
-                                        <div>
-                                            <a className="badge"
-                                                onClick={e => this.activeinactiveuser(selectedrow)}>Activate</a>
-                                        </div>
-                                    )
-                                }
-                                else {
-                                    return (
-                                        <div>
-                                            <a className="badge"
-                                                onClick={e => this.activeinactiveuser(selectedrow)}>Deactivate</a>
-                                        </div>
-                                    )
-                                }
-
-
-
-                            }
-                    },
-                    {
-                        Header: 'Unlock',
-                        Cell:
-                            selectedrow => {
-                                if (selectedrow.original.lockstatus === 'Y') {
-                                    return (
-                                        <div>
-                                            <a className="badge"
-                                                onClick={e => this.unlockuser(selectedrow)}>Unlock</a>
-                                        </div>
-                                    )
-                                }
-
-                            }
-                    },
-                    {
-                        Header: 'Edit',
-                        Cell:
-                            selectedrow => {
-                                return (
-                                    <div>
-                                        <a className="badge"
-                                       onClick={e => this.editusers(selectedrow)} >Edit</a>
-                                    </div>
-                                )
-
-
-                            }
-                    }
-
-                ]
-                }
-                defaultPageSize={10}
-                className="-striped -highlight"
-            />
-
-            {/* <DataTable
-                className="container"
-                keys="userid"
-                columns={columns}
-                initialData={this.state.outData}
-                initialPageLength={5}
-                initialSortBy={{ prop: 'NAME', order: 'descending' }}
-                pageLengthOptions={[5, 20, 50]}>              
-                
-                </DataTable> */}
-        </div>
-
-
+        return <UserListContent userdata={this} />
 
     }
 }
