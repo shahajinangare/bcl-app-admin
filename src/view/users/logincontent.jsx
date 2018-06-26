@@ -8,7 +8,7 @@ const LoginContent = ({login}) => (
 			
 			<div className="login-form-1">
 			<form  onSubmit={login.loginsubmit}>
-					<div className="login-form-main-message"></div>
+					<div className="login-form-main-message">{login.state.ErrorMsg}</div>
 					<div className="main-login-form">
 						<div className="login-group">
 							<div className="form-group">

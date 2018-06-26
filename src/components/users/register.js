@@ -6,23 +6,43 @@ import ReactDOM from 'react-dom';
 import { deviceDetect } from 'react-device-detect';
 import publicIP from 'react-native-public-ip';
 
+
 class Register extends Component {
    
-  constructor(props) {
+   constructor(props) {
     super(props);
-      
+
+    const params = new URLSearchParams(props.location.search);
+    const id = params.get('id');
+    
+    
       this.state = {
       ErrorMsg:'',
       roles:[],
       type:'',
+      Uid : id,
+      upd_userid:'',
+      upd_username:'',
+      upd_useremailid:'',
+      upd_usermobileno:'',
+      upd_userbussinesscode:'',
+      upd_userroleid:'',
       };
     
       this.registersubmit = this.registersubmit.bind(this);
+      this.Updatesubmit = this.Updatesubmit.bind(this);
       this.loginview = this.loginview.bind(this);
       
-     }
+    }
+    
       componentDidMount() {
       this.getAllrole();
+      if(this.state.Uid != null)
+      {
+      
+        this.getUserById(this.state.Uid);
+      }
+                
     }
 
      getAllrole(){
@@ -40,9 +60,64 @@ class Register extends Component {
               {
                 let RolesFromApi = responseJson.result.map(role => { return {roleid: role.roleid, rolename: role.rolename} })
                 this.setState({ roles: [{roleid: '', rolename: 'Select role'}].concat(RolesFromApi) });
+                if(this.state.Uid != null)
+                {
+                  this.setState({
+                    type:'upd'
+                  })
+                }
+                else
+                {
                 this.setState({
-                  type:'new1'
+                  type:'reg'
                 })
+              }
+
+                
+              }
+              else
+              {
+                this.setState({
+                  ErrorMsg: responseJson.message
+                });
+              }
+            return responseJson.result;
+          })
+          .catch((error) => {
+            console.error(error);
+          });
+     }
+
+     getUserById(UID){
+      fetch('http://localhost:7000/admin/getusers', {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body:JSON.stringify({
+          i_emailid: '',
+          i_userid:UID
+          
+        }),
+     
+      }).then((response) => response.json())
+          .then((responseJson) => {
+           console.log(responseJson.result);
+           console.log(responseJson.result[0].NAME);
+           console.log(responseJson.result[0].userid);
+              if(responseJson.code = '200')
+              {
+                this.setState({
+                  upd_userid: responseJson.result[0].userid,
+                  upd_username: responseJson.result[0].NAME,
+                  upd_useremailid: responseJson.result[0].emailid,
+                  upd_usermobileno: responseJson.result[0].mobileno,
+                  upd_userbussinesscode: responseJson.result[0].bussinesscode,
+                  upd_userroleid: responseJson.result[0].roleid,
+                  
+                });
+                
               }
               else
               {
@@ -91,8 +166,8 @@ class Register extends Component {
           browser:deviceinfo.browserName,
           os:deviceinfo.osName,
           source: deviceinfo.engineName,
-          createdby:IPaddress,
-          createdip:'123.88.88.8'
+          createdby:'1',
+          createdip:IPaddress
         }),
       }).then((response) => response.json())
           .then((responseJson) => {
@@ -114,6 +189,59 @@ class Register extends Component {
             console.error(error);
           });
     }
+    Updatesubmit(event){ 
+      event.preventDefault();
+      let IPaddress='';
+     
+       const deviceinfo= deviceDetect();
+
+       publicIP().then(ip => {
+        console.log(ip);
+        IPaddress =ip;
+      });
+
+      fetch('http://localhost:7000/admin/updateuser', {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body:JSON.stringify({
+          userid: event.target.upduserid.value,
+          username: event.target.uptusername.value,
+          emailid:event.target.uptemailid.value,
+          mobileno:event.target.uptmobileno.value,
+          roleid:event.target.updroleid.value,
+          bussinesscode:event.target.uptbussinescode.value,
+          latlong:'333',
+          macaddress:'sdld',
+          browser:deviceinfo.browserName,
+          os:deviceinfo.osName,
+          source: deviceinfo.engineName,
+          createdby:'1',
+          createdip:IPaddress
+        }),
+      }).then((response) => response.json())
+          .then((responseJson) => {
+            console.log(responseJson);
+           
+              if(responseJson.code = '200')
+              {
+                alert("Updated");
+              }
+              else
+              {
+                this.setState({
+                  ErrorMsg: responseJson.message
+                });
+              }
+            return responseJson.result;
+          })
+          .catch((error) => {
+            console.error(error);
+          });
+    }
+    
 
   loginview(event){
        ReactDOM.render((<Login/>),document.getElementById("main-content"));
