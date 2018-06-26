@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import UserListContent from '../../view/users/userlist';
-import { DataTable } from 'react-data-components';
-//import {Table, Column, Cell,TableHeader} from 'fixed-data-table';
 import ReactTable from "react-table";
-import { Link } from 'react-router';
+import VWRegisterContent from "../../view/users/register";
 import "react-table/react-table.css";
+import PopoutWindowut from 'react-popout';
 
 class UserList extends Component {
 
@@ -14,15 +13,43 @@ class UserList extends Component {
 
         this.state = {
             outData: [],
-            emailid:''
+            emailid: ''
         };
 
         this.getusers = this.getusers.bind(this);
+        this.unlockuser = this.unlockuser.bind(this);
     }
-    unlockuser(emailid)
-    {
 
-        alert(emailid.emailid);
+    activeinactiveuser(selectedrow) {
+
+        // console.log(selectedrow.row.emailid);
+
+        fetch('http://localhost:7000/admin/activeinactiveuser', {
+            method: 'POST',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                emailid: selectedrow.row.emailid
+            }),
+        }).then((response) => response.json())
+            .then((responseJson) => {
+                // console.log(responseJson.result.o_errcode);    
+                //return responseJson.result;
+                if (responseJson.code === 200)
+                    alert(responseJson.message);
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+
+        window.location.reload();
+    }
+
+    unlockuser(selectedrow) {
+
+        // console.log(selectedrow.row.emailid);
 
         fetch('http://localhost:7000/admin/userunlock', {
             method: 'POST',
@@ -31,16 +58,20 @@ class UserList extends Component {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                emailid: 'nileslh.patil@bajalcapital.com'
+                emailid: selectedrow.row.emailid //'nileslh.patil@bajalcapital.com'
             }),
         }).then((response) => response.json())
             .then((responseJson) => {
-                console.log(responseJson.result);    
-                return responseJson.result;
+                // console.log(responseJson.result.o_errcode);    
+                //return responseJson.result;
+                if (responseJson.code === 200)
+                    alert(selectedrow.row.NAME + ' is unlocked now.');
             })
             .catch((error) => {
                 console.error(error);
             });
+
+        window.location.reload();
     }
 
     getusers() {
@@ -52,7 +83,8 @@ class UserList extends Component {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                i_emailid: ''
+                i_emailid: '',
+                i_userid: ''
             }),
         }).then((response) => response.json())
             .then((responseJson) => {
@@ -69,60 +101,115 @@ class UserList extends Component {
             });
     }
     componentDidMount() {
-       
+
         this.getusers();
     }
+
+    editusers(selectedrow) {
+
+        return 
+        <PopoutWindowut containerId='tearoff'>
+    <VWRegisterContent register={this}/>
+</PopoutWindowut>
+      
+
+    }
+
 
 
     render() {
         console.log(this.state.outData);
         return <div>
-<br/>
-<br/>
-<br/>
-<br/>
+            <br />
+            <br />
+            <br />
+            <br />
             <ReactTable
                 data={this.state.outData}
                 filterable
                 defaultFilterMethod={(filter, row) =>
-                  String(row[filter.id.toLowerCase]) === filter.value.toLowerCase}
+                    String(row[filter.id.toLowerCase]) === filter.value.toLowerCase}
                 columns={[
                     {
                         Header: "Name",
                         accessor: "NAME",
-                         filterMethod: (filter, row) =>
-                         row[filter.id].startsWith(filter.value) ||
-                         row[filter.id].endsWith(filter.value)
+                        filterMethod: (filter, row) =>
+                            row[filter.id].startsWith(filter.value) ||
+                            row[filter.id].endsWith(filter.value)
                         // filterAll: true
                     },
                     {
                         Header: "Email",
                         accessor: "emailid",
                         filterMethod: (filter, row) =>
-                         row[filter.id].startsWith(filter.value) ||
-                         row[filter.id].endsWith(filter.value)
-                           
-                             
+                            row[filter.id].startsWith(filter.value) ||
+                            row[filter.id].endsWith(filter.value)
+
+
                     },
                     {
                         Header: "Mobile No",
                         accessor: "mobileno",
                         filterMethod: (filter, row) =>
-                        row[filter.id].startsWith(filter.value) ||
-                        row[filter.id].endsWith(filter.value)
-                          
+                            row[filter.id].startsWith(filter.value) ||
+                            row[filter.id].endsWith(filter.value)
+
                     },
                     {
-                        header: '',
-                        id: 'links',
-                        Cell: row => {
-                            return (
-                              <div>
-                                <a className="class-for-name" onClick={this.unlockuser} >Unlock</a>                               
-                              </div>
-                            )
-                          }
-                      }
+                        Header: 'Actions',
+                        Cell:
+                            selectedrow => {
+                                if (selectedrow.original.isactive === 'N') {
+                                    return (
+                                        <div>
+                                            <a className="badge"
+                                                onClick={e => this.activeinactiveuser(selectedrow)}>Activate</a>
+                                        </div>
+                                    )
+                                }
+                                else {
+                                    return (
+                                        <div>
+                                            <a className="badge"
+                                                onClick={e => this.activeinactiveuser(selectedrow)}>Deactivate</a>
+                                        </div>
+                                    )
+                                }
+
+
+
+                            }
+                    },
+                    {
+                        Header: 'Unlock',
+                        Cell:
+                            selectedrow => {
+                                if (selectedrow.original.lockstatus === 'Y') {
+                                    return (
+                                        <div>
+                                            <a className="badge"
+                                                onClick={e => this.unlockuser(selectedrow)}>Unlock</a>
+                                        </div>
+                                    )
+                                }
+
+                            }
+                    },
+                    {
+                        Header: 'Edit',
+                        Cell:
+                            selectedrow => {
+                                return (
+                                    <div>
+                                        <a className="badge"
+                                       onClick={e => this.editusers(selectedrow)} >Edit</a>
+                                    </div>
+                                )
+
+
+                            }
+                    }
+
                 ]
                 }
                 defaultPageSize={10}

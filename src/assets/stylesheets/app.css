@@ -43,3 +43,10 @@
   height: auto;
   margin: 0 auto;
 }
+
+
+a:link {
+  text-decoration: none;
+  color: blue;
+}
+
