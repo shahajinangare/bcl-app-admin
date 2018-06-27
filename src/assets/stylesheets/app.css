@@ -14,7 +14,7 @@
  color: gray;
  font-weight: bold;
 }
-.App-header {
+.header {
   background-color: #ffffff;
   height: 100px;  
   text-align: left;
@@ -50,3 +50,11 @@ a:link {
   color: blue;
 }
 
+#block_container
+{
+    text-align:center;
+}
+#logodiv, #headdiv
+{
+    display:inline;
+}

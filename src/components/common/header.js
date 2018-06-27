@@ -5,13 +5,15 @@ import '../../assets/stylesheets/app.css';
 class Header extends Component {
   render() {
     return (
-      <div className="App">
+        <div className="App">
+        <img src={logo} alt="Bajaj Capital Logo" width="176" height="72"/>
         <header className="App-header">          
-            <img src={logo} alt="logo"   />      	    
+          
             <div className="headertext">Welcome to Bajaj Capital Admin Console</div>
         </header>
        
       </div>
+
     );
   }
 }
