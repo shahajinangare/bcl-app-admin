@@ -5,9 +5,10 @@ const RegisterContent = ({register}) => (
 		{/* <div class="text-center" style={{padding:'50px 0'}}>
 		hi shahaji
 		</div> */}
-		{ register.type==="reg" ?  
+		{ register.state.type==="reg" ?  
 		<div id="divadduser" className="text-center" style={{padding:'50px 0'}}>
 			<div className="logo">Register</div>
+			<span>{register.state.ErrorMsg}</span><br/>
 			<div className="login-form-1">
 				<form id="register-form" className="text-left" onSubmit={register.registersubmit}>
 					<div className="login-form-main-message"></div>
@@ -19,16 +20,16 @@ const RegisterContent = ({register}) => (
 							</div>
 							<div className="form-group">
 								<label htmlFor="reg_password" className="sr-only">Emailid</label>
-								<input type="email" className="form-control" id="regemailid" name="regemailid" autoComplete="off" placeholder="emailid" required/>
+								<input type="email" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" className="form-control" id="regemailid" name="regemailid" autoComplete="off" placeholder="emailid" required/>
 							</div>
 							<div className="form-group">
 								<label htmlFor="reg_password_confirm" className="sr-only">Mobileno</label>
-								<input type="tel" pattern="[0-9]{10}" className="form-control" maxLength="10" id="regmobileno" name="regmobileno" autoComplete="off" placeholder="mobileno" required/>
+								<input type="tel" pattern="^([0|\+[0-9]{1,5})?([7-9][0-9]{9})$" className="form-control" maxLength="10" id="regmobileno" name="regmobileno" autoComplete="off" placeholder="mobileno" required/>
 							</div>
 							
 							<div className="form-group">
 								<label htmlFor="reg_email" className="sr-only">Bussinesscode</label>
-								<input type="text" className="form-control" id="regbussinescode" name="regbussinescode" autoComplete="off" placeholder="bussinesscode" required/>
+								<input type="text" className="form-control" id="regbussinescode" name="regbussinescode" maxLength="4" autoComplete="off" placeholder="bussinesscode" required/>
 							</div>
 							<div className="form-group">
 							<select name="roleid" id="roleid" className="form-control" required>
@@ -59,6 +60,7 @@ const RegisterContent = ({register}) => (
 
 		<div id="divupdateuser" className="text-center" style={{padding:'50px 0'}}>
 			<div className="logo">Update User Info</div>
+			<span>{register.state.ErrorMsg}</span><br/>
 			<div className="login-form-1">
 				<form id="register-form" className="text-left" onSubmit={register.Updatesubmit}>
 					<div className="login-form-main-message"></div>
@@ -71,16 +73,16 @@ const RegisterContent = ({register}) => (
 							</div>
 							<div className="form-group">
 								<label htmlFor="reg_password" className="sr-only">Emailid</label>
-								<input type="email" className="form-control" id="uptemailid" name="uptemailid" autoComplete="off" placeholder="emailid" required defaultValue={register.state.upd_useremailid}/>
+								<input type="email" className="form-control" id="uptemailid" name="uptemailid" autoComplete="off" placeholder="emailid" required value={register.state.upd_useremailid}/>
 							</div>
 							<div className="form-group">
 								<label htmlFor="reg_password_confirm" className="sr-only">Mobileno</label>
-								<input type="tel" pattern="[0-9]{10}" className="form-control" maxLength="10" id="uptmobileno" name="uptmobileno" autoComplete="off" placeholder="mobileno" required defaultValue={register.state.upd_usermobileno}/>
+								<input type="tel" pattern="^([0|\+[0-9]{1,5})?([7-9][0-9]{9})$" className="form-control" maxLength="10" id="uptmobileno" name="uptmobileno" autoComplete="off" placeholder="mobileno" required defaultValue={register.state.upd_usermobileno}/>
 							</div>
 							
 							<div className="form-group">
 								<label htmlFor="reg_email" className="sr-only">Bussinesscode</label>
-								<input type="text" className="form-control" id="uptbussinescode" name="uptbussinescode" autoComplete="off" placeholder="bussinesscode" required defaultValue={register.state.upd_userbussinesscode}/>
+								<input type="text" className="form-control" id="uptbussinescode" name="uptbussinescode" autoComplete="off" maxLength="4" placeholder="bussinesscode" required defaultValue={register.state.upd_userbussinesscode}/>
 							</div>
 							<div className="form-group">
 							<select name="updroleid" id="updroleid" className="form-control" required value={register.state.upd_userroleid} onChange={register.handleSelectChange} >
