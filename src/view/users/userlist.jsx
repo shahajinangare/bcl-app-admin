@@ -13,7 +13,7 @@ const UserListContent = ({userdata}) => (
             <br />
             <br />
             <br />
-            <a className="badge" href="/register"><span>New Registration</span></a>
+            <a className="badge"  href="/register"><span>New Registration</span></a>
             <br />
             <ReactTable
                 data={userdata.state.outData}

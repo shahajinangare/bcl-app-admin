@@ -6,7 +6,7 @@ class Header extends Component {
   render() {
     return (
         <div className="App">
-        <img src={logo} alt="Bajaj Capital Logo" width="176" height="72"/>
+       <div className="logoleft"> <img src={logo} alt="Bajaj Capital Logo" width="176" height="72"/> </div>
         <header className="App-header">          
           
             <div className="headertext">Welcome to Bajaj Capital Admin Console</div>

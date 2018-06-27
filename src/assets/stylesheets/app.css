@@ -13,15 +13,18 @@
   font-size: large;
  color: gray;
  font-weight: bold;
+
 }
 .header {
   background-color: #ffffff;
   height: 100px;  
   text-align: left;
   font-size: 1.5em;
-  width: 100%;
 }
 
+.logoleft{
+  text-align: left;
+}
 .App-title {
   font-size: 1.5em;
 }
@@ -51,11 +54,3 @@ a:link {
   color: blue;
 }
 
-#block_container
-{
-    text-align:center;
-}
-#logodiv, #headdiv
-{
-    display:inline;
-}
