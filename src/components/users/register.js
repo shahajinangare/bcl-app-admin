@@ -5,6 +5,7 @@ import Login from '../../components/users/login';
 import ReactDOM from 'react-dom';
 import { deviceDetect } from 'react-device-detect';
 import publicIP from 'react-native-public-ip';
+import Userdetail from '../../components/users/userlist';
 
 
 class Register extends Component {
@@ -13,13 +14,11 @@ class Register extends Component {
     super(props);
 
     //const params = new URLSearchParams(props.location.search);
-    let id=null;
-    if(props.register != undefined)
+    let id='';
+    if(props.register !== undefined)
     {
       id= props.register.row._original.userid;
     }
-    
-    
     
       this.state = {
       ErrorMsg:'',
@@ -32,23 +31,23 @@ class Register extends Component {
       upd_usermobileno:'',
       upd_userbussinesscode:'',
       upd_userroleid:'',
+      
       };
     
       this.registersubmit = this.registersubmit.bind(this);
       this.Updatesubmit = this.Updatesubmit.bind(this);
-      this.loginview = this.loginview.bind(this);
+     
       this.handleSelectChange = this.handleSelectChange.bind(this);
       
     }
     
       componentDidMount() {
+       
       this.getAllrole();
-      if(this.state.Uid != null)
+      if(this.state.Uid.length !== 0)
       {
-      
-        this.getUserById(this.state.Uid);
+         this.getUserById(this.state.Uid);
       }
-                
     }
     handleSelectChange(event) {
      this.setState({upd_userroleid: event.target.value});
@@ -64,11 +63,11 @@ class Register extends Component {
       }).then((response) => response.json())
           .then((responseJson) => {
            
-              if(responseJson.code = '200')
+              if(responseJson.code == '200')
               {
                 let RolesFromApi = responseJson.result.map(role => { return {roleid: role.roleid, rolename: role.rolename} })
                 this.setState({ roles: [{roleid: '', rolename: 'Select role'}].concat(RolesFromApi) });
-                if(this.state.Uid != null)
+                if(this.state.Uid.length !== 0)
                 {
                   this.setState({
                     type:'upd'
@@ -79,7 +78,7 @@ class Register extends Component {
                 this.setState({
                   type:'reg'
                 })
-              }
+                }
 
                 
               }
@@ -114,7 +113,7 @@ class Register extends Component {
            console.log(responseJson.result);
            console.log(responseJson.result[0].NAME);
            console.log(responseJson.result[0].userid);
-              if(responseJson.code = '200')
+              if(responseJson.code == '200')
               {
                 this.setState({
                   upd_userid: responseJson.result[0].userid,
@@ -142,7 +141,7 @@ class Register extends Component {
      
       registersubmit(event) {
       event.preventDefault();
-      let IPaddress='';
+     
      
       const items ='abcdefghijklmnopqrstuvwxyz'
       var randomnumber ='';
@@ -153,9 +152,10 @@ class Register extends Component {
 
        publicIP().then(ip => {
         console.log(ip);
-        IPaddress =ip;
+       
       });
-
+     
+    
       fetch('http://localhost:7000/admin/registration', {
         method: 'POST',
         headers: {
@@ -175,18 +175,19 @@ class Register extends Component {
           os:deviceinfo.osName,
           source: deviceinfo.engineName,
           createdby:'1',
-          createdip:IPaddress
+          createdip:'88'
         }),
       }).then((response) => response.json())
           .then((responseJson) => {
             console.log(responseJson);
            
-              if(responseJson.code = '200')
+              if(responseJson.code == '200')
               {
-                
+                ReactDOM.render((<Userdetail/>),document.getElementById("main-content"));
               }
               else
               {
+               
                 this.setState({
                   ErrorMsg: responseJson.message
                 });
@@ -199,13 +200,11 @@ class Register extends Component {
     }
     Updatesubmit(event){ 
       event.preventDefault();
-      let IPaddress='';
-     
-       const deviceinfo= deviceDetect();
+      const deviceinfo= deviceDetect();
 
        publicIP().then(ip => {
         console.log(ip);
-        IPaddress =ip;
+       
       });
 
       fetch('http://localhost:7000/admin/updateuser', {
@@ -227,15 +226,16 @@ class Register extends Component {
           os:deviceinfo.osName,
           source: deviceinfo.engineName,
           createdby:'1',
-          createdip:IPaddress
+          createdip:'99'
         }),
       }).then((response) => response.json())
           .then((responseJson) => {
             console.log(responseJson);
            
-              if(responseJson.code = '200')
+              if(responseJson.code == '200')
               {
-                alert("Updated");
+                ReactDOM.render((<Userdetail/>),document.getElementById("main-content"));
+              
               }
               else
               {
@@ -251,9 +251,6 @@ class Register extends Component {
     }
     
 
-  loginview(event){
-       ReactDOM.render((<Login/>),document.getElementById("main-content"));
-      }
   
     render() {
       return (
