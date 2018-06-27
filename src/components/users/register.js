@@ -20,8 +20,6 @@ class Register extends Component {
       id= props.register.row._original.userid;
     }
     
-    
-    
       this.state = {
       ErrorMsg:'',
       roles:[],
