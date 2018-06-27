@@ -8,6 +8,9 @@ import RegisterContent from '../../view/users/register';
 import ForgotpassContent from '../../components/users/forgotpass';
 import { Route, Redirect } from 'react-router'
 import PasswordHash from 'password-hash';
+import { deviceDetect } from 'react-device-detect';
+import publicIP from 'react-native-public-ip';
+
 
 class Login extends Component {
 
@@ -34,7 +37,13 @@ class Login extends Component {
       var hashedPassword = PasswordHash.generate(event.target.password.value)
 
       console.log(hashedPassword);
+      let IPaddress='';
+      publicIP().then(ip => {
+        //console.log(ip);
+        IPaddress = ip;
+      });
 
+      const deviceinfo= deviceDetect();
       event.preventDefault();
       fetch('http://localhost:7000/admin/login', {
         method: 'POST',
@@ -44,7 +53,14 @@ class Login extends Component {
         },
         body:JSON.stringify({
           emailid: event.target.emailid.value,
-          password:event.target.password.value
+          password:event.target.password.value,
+          latlong:'333',
+          macaddress:'sdld',
+          browser:deviceinfo.browserName,
+          os:deviceinfo.osName,
+          source: deviceinfo.engineName,
+          createdby:'1',
+          createdip:IPaddress
         }),
       }).then((response) => response.json())
           .then((responseJson) => {

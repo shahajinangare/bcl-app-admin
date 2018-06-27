@@ -7,9 +7,9 @@ import Forgotpass from '../../components/users/forgotpass';
 import UserList from '../../components/users/userlist';
 import Testapp from '../test/testapp';
 import {browserHistory} from 'react-router';
+import Setpass from '../../components/users/setpass';
+ 
 
-
-import { Redirect } from 'react-router'
 class MainComponent extends Component {
   render() {
     return (
@@ -20,6 +20,7 @@ class MainComponent extends Component {
             <Route exact path='/register' component={Register}  />
             <Route exact path='/forgotpass' component={Forgotpass} />
             <Route exact path='/users' component={UserList} />
+            <Route exact path='/setpass' component={Setpass} />
             {/* <Redirect to="/register" /> */}
           </Switch>
        

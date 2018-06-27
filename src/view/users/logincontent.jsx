@@ -24,7 +24,7 @@ const LoginContent = ({login}) => (
 					</div>
 					</form>
 					  <div className="etc-login-form">
-						<p>forgot your password? <a href="" onClick={login.forgotpasssubmit}  >click here</a></p>
+						<p>forgot your password? <a href="/forgotpass"    >click here</a></p>
 						{/* <p>new user? <a href="" onClick={login.registersubmit}>create new account</a></p> */}
 					
 					</div> 
