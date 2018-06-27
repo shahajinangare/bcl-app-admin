@@ -237,8 +237,6 @@ class Register extends Component {
            
               if(responseJson.code == '200')
               {
-                
-                
                 ReactDOM.render((<Userdetail/>),document.getElementById("main-content"));
               
               }
