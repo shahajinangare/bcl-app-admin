@@ -50,9 +50,7 @@ const RegisterContent = ({register}) => (
 						</div>
 						<button type="submit" className="login-button" ><i className="fa fa-chevron-right"></i></button>
 					</div>
-					<div className="etc-login-form">
-						<p>already have an account? <a href="" onClick={register.loginview}>login here</a></p>
-					</div>
+					
 				</form>
 			</div>
 
@@ -60,7 +58,7 @@ const RegisterContent = ({register}) => (
 		: 
 
 		<div id="divupdateuser" className="text-center" style={{padding:'50px 0'}}>
-			<div className="logo">Register</div>
+			<div className="logo">Update User Info</div>
 			<div className="login-form-1">
 				<form id="register-form" className="text-left" onSubmit={register.Updatesubmit}>
 					<div className="login-form-main-message"></div>
@@ -82,7 +80,7 @@ const RegisterContent = ({register}) => (
 							
 							<div className="form-group">
 								<label htmlFor="reg_email" className="sr-only">Bussinesscode</label>
-								<input type="text" className="form-control" id="uptbussinescode" name="uptbussinescode" autoComplete="off" placeholder="bussinesscodes" required defaultValue={register.state.upd_userbussinesscode}/>
+								<input type="text" className="form-control" id="uptbussinescode" name="uptbussinescode" autoComplete="off" placeholder="bussinesscode" required defaultValue={register.state.upd_userbussinesscode}/>
 							</div>
 							<div className="form-group">
 							<select name="updroleid" id="updroleid" className="form-control" required value={register.state.upd_userroleid} onChange={register.handleSelectChange} >
@@ -104,9 +102,7 @@ const RegisterContent = ({register}) => (
 						</div>
 						<button type="submit" className="login-button" ><i className="fa fa-chevron-right"></i></button>
 					</div>
-					<div className="etc-login-form">
-						<p>already have an account? <a href="" onClick={register.loginview}>login here</a></p>
-					</div>
+					
 				</form>
 			</div>
 
