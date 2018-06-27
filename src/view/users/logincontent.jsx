@@ -23,11 +23,11 @@ const LoginContent = ({login}) => (
 						<button type="submit" className="login-button" ><i className="fa fa-chevron-right"></i></button>
 					</div>
 					</form>
-					<div className="etc-login-form">
+					  <div className="etc-login-form">
 						<p>forgot your password? <a href="" onClick={login.forgotpasssubmit}  >click here</a></p>
-						<p>new user? <a href="" onClick={login.registersubmit}>create new account</a></p>
+						{/* <p>new user? <a href="" onClick={login.registersubmit}>create new account</a></p> */}
 					
-					</div>
+					</div> 
 				
 			</div>
 		</div>
